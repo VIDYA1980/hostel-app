@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(fontFamily: "Times New Roman" // Use your chosen font
             ),
         debugShowCheckedModeBanner: false,
-        home: WelcomeScreen(),
+        home: const WelcomeScreen(),
         onGenerateRoute: Routers.generateRoute);
   }
 }

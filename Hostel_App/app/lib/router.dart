@@ -1,5 +1,6 @@
 import 'package:app/Screens/Login/loginScreen.dart';
 import 'package:app/Screens/Signup/signupScreen.dart';
+import 'package:app/Screens/Student/AddComplaint/addComplaintScreen.dart';
 import 'package:flutter/material.dart';
 
 class Routers {
@@ -9,6 +10,8 @@ class Routers {
         return routeScreen(LoginPage());
       case "/signup":
         return routeScreen(SignupPage());
+      case "/add-complaint":
+        return routeScreen(ComplaintForm());
       default:
         return null;
     }

@@ -2,10 +2,17 @@ import 'package:app/Components/transparentTextField.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 27, 27, 27),
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 28, 28, 35),
+        elevation: 0,
+        centerTitle: true,
+      ),
+      backgroundColor: const Color.fromARGB(255, 28, 28, 35),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -20,26 +27,26 @@ class LoginPage extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 45),
               TransparentRoundedTextField(label: 'Email'),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TransparentRoundedTextField(label: 'Password', isPassword: true),
-              SizedBox(height: 15),
-              Container(
+              const SizedBox(height: 45),
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Implement login logic here
+                    Navigator.pushNamed(context, "/add-complaint");
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.orange,
+                    backgroundColor: Colors.orange,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                     elevation: 5,
                   ),
-                  child: Text(
+                  child: const Text(
                     'Log In',
                     style: TextStyle(
                       color: Colors.white,
@@ -48,30 +55,30 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/signup');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 81, 81, 81),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    elevation: 5,
-                  ),
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
+              // const SizedBox(height: 15),
+              // SizedBox(
+              //   width: MediaQuery.of(context).size.width * 0.8,
+              //   height: 50,
+              //   child: ElevatedButton(
+              //     onPressed: () {
+              //       Navigator.pushNamed(context, '/signup');
+              //     },
+              //     style: ElevatedButton.styleFrom(
+              //       backgroundColor: const Color.fromARGB(255, 81, 81, 81),
+              //       shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(30),
+              //       ),
+              //       elevation: 5,
+              //     ),
+              //     child: const Text(
+              //       'Sign Up',
+              //       style: TextStyle(
+              //         color: Colors.white,
+              //         fontSize: 18,
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
