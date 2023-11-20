@@ -7,7 +7,12 @@ import 'package:app/services/auth_service.dart';
 
 final AuthService authService = AuthService();
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await authService.initialize();
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
