@@ -20,8 +20,10 @@ def getTokenAndData(data,user):
         "status": "success",
         "student" : user.is_student,
         "role" : str(user.role),
-        "name" : f"{user.first_name} {user.last_name}",
-        "college_id": user.reg_or_emp_id,
+        # "name" : f"{user.first_name} {user.last_name}",
+        "firstName" : user.first_name,
+        "lastName" : user.last_name,
+        "regOrEmpID": user.reg_or_emp_id,
         "email" : user.email,
         "refresh": str(data['refresh']),
         "access": str(data['access']),
@@ -65,10 +67,10 @@ def loginUser(request):
     user = User.objects.filter(Q(email=email_or_id) | Q(reg_or_emp_id=email_or_id)).first()
 
     if user is None:
-        return Response(status=400, data={"error": "Invalid login credentials"})
+        return Response(status=400, data={"error": "Invalid login credentials. "})
 
     if not user.check_password(password):
-        return Response(status=400, data={"error": "Invalid login credentials"})
+        return Response(status=400, data={"error": "Invalid login credentials. "})
     
     json = {
         "email" : user.email,

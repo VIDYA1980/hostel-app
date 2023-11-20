@@ -1,11 +1,32 @@
 import 'package:app/Components/transparentTextField.dart';
+import 'package:app/constants.dart';
+import 'package:app/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  late AuthService authService;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  void login() async {
+    bool succesfulLogin = await authService.login(emailController.text, passwordController.text);
+    if (succesfulLogin && navigatorKey.currentContext != null) {
+      print("Logged in as student ${authService.getUserData.isStudent}");
+      Navigator.of(navigatorKey.currentContext as BuildContext).pushNamedAndRemoveUntil("/home", (route) => false);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    authService = Provider.of<AuthService>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 28, 28, 35),
@@ -28,31 +49,21 @@ class LoginPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 45),
-              TransparentRoundedTextField(label: 'Email'),
+              TransparentRoundedTextField(controller: emailController, label: 'Email'),
               const SizedBox(height: 15),
-              TransparentRoundedTextField(label: 'Password', isPassword: true),
+              TransparentRoundedTextField(controller: passwordController, label: 'Password', isPassword: true),
               const SizedBox(height: 45),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/add-complaint");
-                  },
+                  onPressed: login,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                     elevation: 5,
                   ),
-                  child: const Text(
-                    'Log In',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  ),
+                  child: const Text('Log In', style: TextStyle(color: Colors.white, fontSize: 18)),
                 ),
               ),
               // const SizedBox(height: 15),

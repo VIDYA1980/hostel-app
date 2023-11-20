@@ -3,17 +3,21 @@ import 'package:flutter/material.dart';
 class TransparentRoundedTextField extends StatelessWidget {
   final String label;
   final bool isPassword;
+  final TextEditingController controller;
 
-  TransparentRoundedTextField({
+  const TransparentRoundedTextField({
+    key,
     required this.label,
     this.isPassword = false,
-  });
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.8,
       child: TextField(
+        controller: controller,
         obscureText: isPassword,
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
