@@ -18,9 +18,10 @@ class ApiService {
     Map<String, String> headers = {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"};
     String requestBody = json.encode(data);
 
-    http.Request request = http.Request(_getHttpMethodName(method), Uri.parse(url))
-      ..headers.addAll(headers)
-      ..body = requestBody;
+    http.Request request =
+        http.Request(_getHttpMethodName(method), Uri.parse(url))
+          ..headers.addAll(headers)
+          ..body = requestBody;
 
     try {
       http.StreamedResponse streamedResponse = await request.send();

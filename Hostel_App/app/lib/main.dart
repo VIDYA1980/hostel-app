@@ -1,3 +1,4 @@
+import 'package:app/utilities/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,14 +21,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider<AuthService>.value(value: authService)],
+      providers: [
+        ChangeNotifierProvider<AuthService>.value(value: authService)
+      ],
       child: MaterialApp(
         navigatorKey: navigatorKey,
         theme: ThemeData(
           fontFamily: "Times New Roman",
-          appBarTheme: const AppBarTheme(backgroundColor: kprimaryColor),
-          scaffoldBackgroundColor: kprimaryColor,
-          textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.white, fontSize: 16)),
+          appBarTheme: AppBarTheme(backgroundColor: kBackgroundColor),
+          scaffoldBackgroundColor: kBackgroundColor,
+          textTheme: const TextTheme(
+              bodyMedium: TextStyle(color: Colors.white, fontSize: 16)),
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: Routers.generateRoute,

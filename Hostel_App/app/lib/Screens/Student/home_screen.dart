@@ -1,4 +1,5 @@
 import 'package:app/models/user.dart';
+import 'package:app/screens/student/complaints_list/complaints_list_view.dart';
 import 'package:app/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,11 +23,20 @@ class StudentHomeScreen extends StatelessWidget {
           Text("Role : ${userData.role}"),
           Text("Access Token : ${userData.accessToken}"),
           ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ComplaintsListView(),
+                ));
+              },
+              child: const Text("Complaints List")),
+          ElevatedButton(
             onPressed: () async {
-              AuthService authService = Provider.of<AuthService>(context, listen: false);
+              AuthService authService =
+                  Provider.of<AuthService>(context, listen: false);
               await authService.logOut();
               if (!context.mounted) return;
-              Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil("/home", (route) => false);
             },
             child: const Text("Logout"),
           )

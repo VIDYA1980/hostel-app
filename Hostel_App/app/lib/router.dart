@@ -1,10 +1,10 @@
-import 'package:app/Screens/Login/loginScreen.dart';
-import 'package:app/Screens/Organization/org_home_screen.dart';
-import 'package:app/Screens/Signup/signupScreen.dart';
-import 'package:app/Screens/Student/AddComplaint/addComplaintScreen.dart';
-import 'package:app/Screens/Student/home_screen.dart';
-import 'package:app/Screens/Welcome/welcomeScreen.dart';
+import 'package:app/screens/login/login_screen.dart';
+import 'package:app/screens/organization/org_home_screen.dart';
+import 'package:app/screens/signup/signup_screen.dart';
+import 'package:app/screens/student/add_complaint/add_complaints.dart';
+import 'package:app/screens/student/home_screen.dart';
 import 'package:app/main.dart';
+import 'package:app/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 class Routers {
