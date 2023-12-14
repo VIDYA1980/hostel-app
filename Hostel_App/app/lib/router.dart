@@ -19,7 +19,7 @@ class Routers {
       case "/login":
         return routeScreen(const LoginPage());
       case "/signup":
-        return routeScreen(SignupPage());
+        return routeScreen(const SignupPage());
       case "/add-complaint":
         return routeScreen(const ComplaintForm());
       case OrganizationHomeScreen.routeName:

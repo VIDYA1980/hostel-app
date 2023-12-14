@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     bool succesfulLogin =
         await authService.login(emailController.text, passwordController.text);
     if (succesfulLogin && navigatorKey.currentContext != null) {
-      print("Logged in as student ${authService.getUserData.isStudent}");
+      // print("Logged in as student ${authService.getUserData.isStudent}");
       Navigator.of(navigatorKey.currentContext as BuildContext)
           .pushNamedAndRemoveUntil("/home", (route) => false);
     }

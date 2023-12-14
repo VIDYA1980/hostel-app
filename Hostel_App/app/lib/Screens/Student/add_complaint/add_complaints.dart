@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart'; // Import image_picker package
 
 class ComplaintForm extends StatefulWidget {
-  const ComplaintForm({Key? key});
+  const ComplaintForm({super.key});
 
   @override
   State<ComplaintForm> createState() => _ComplaintFormState();

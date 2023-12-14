@@ -2,6 +2,8 @@ import 'package:app/utilities/palette.dart';
 import 'package:flutter/material.dart';
 
 class ComplaintsListView extends StatelessWidget {
+  const ComplaintsListView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> hostelComplaints = [
@@ -28,7 +30,9 @@ class ComplaintsListView extends StatelessWidget {
     return Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        title: Text('List of Complaints'),
+        title: const Text('List of Complaints'),
+        titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
+        iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
         backgroundColor: kBackgroundColor,
       ),
@@ -38,7 +42,8 @@ class ComplaintsListView extends StatelessWidget {
           return ListTile(
             title: Text(
               hostelComplaints[index]['title']!,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.white),
             ),
             subtitle: Text(hostelComplaints[index]['description']!),
             onTap: () {

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatelessWidget {
+  const SignupPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 27, 27, 27),
+      backgroundColor: const Color.fromARGB(255, 27, 27, 27),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -19,14 +21,15 @@ class SignupPage extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 30),
-              TransparentRoundedTextField(label: 'Name'),
-              SizedBox(height: 15),
-              TransparentRoundedTextField(label: 'Email'),
-              SizedBox(height: 15),
-              TransparentRoundedTextField(label: 'Password', isPassword: true),
-              SizedBox(height: 15),
-              Container(
+              const SizedBox(height: 30),
+              const TransparentRoundedTextField(label: 'Name'),
+              const SizedBox(height: 15),
+              const TransparentRoundedTextField(label: 'Email'),
+              const SizedBox(height: 15),
+              const TransparentRoundedTextField(
+                  label: 'Password', isPassword: true),
+              const SizedBox(height: 15),
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 50,
                 child: ElevatedButton(
@@ -34,13 +37,13 @@ class SignupPage extends StatelessWidget {
                     // Implement signup logic here
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.orange,
+                    backgroundColor: Colors.orange,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                     elevation: 5,
                   ),
-                  child: Text(
+                  child: const Text(
                     'Get Started',
                     style: TextStyle(
                       color: Colors.white,
@@ -49,8 +52,8 @@ class SignupPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
-              Container(
+              const SizedBox(height: 15),
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 50,
                 child: ElevatedButton(
@@ -58,13 +61,13 @@ class SignupPage extends StatelessWidget {
                     Navigator.pushNamed(context, '/login');
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 81, 81, 81),
+                    backgroundColor: const Color.fromARGB(255, 81, 81, 81),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                     elevation: 5,
                   ),
-                  child: Text(
+                  child: const Text(
                     'I have an account',
                     style: TextStyle(
                       color: Colors.white,
@@ -85,30 +88,31 @@ class TransparentRoundedTextField extends StatelessWidget {
   final String label;
   final bool isPassword;
 
-  TransparentRoundedTextField({
+  const TransparentRoundedTextField({
+    super.key,
     required this.label,
     this.isPassword = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       child: TextField(
         obscureText: isPassword,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: TextStyle(color: Colors.grey),
+          labelStyle: const TextStyle(color: Colors.grey),
           fillColor: Colors.transparent,
           filled: true,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
         ),
       ),

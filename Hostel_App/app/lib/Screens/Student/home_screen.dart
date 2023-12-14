@@ -25,7 +25,7 @@ class StudentHomeScreen extends StatelessWidget {
           ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => ComplaintsListView(),
+                  builder: (context) => const ComplaintsListView(),
                 ));
               },
               child: const Text("Complaints List")),

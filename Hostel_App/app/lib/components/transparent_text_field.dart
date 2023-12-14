@@ -14,24 +14,24 @@ class TransparentRoundedTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       child: TextField(
         controller: controller,
         obscureText: isPassword,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: TextStyle(color: Colors.grey),
+          labelStyle: const TextStyle(color: Colors.grey),
           fillColor: Colors.transparent,
           filled: true,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
         ),
       ),
