@@ -15,7 +15,7 @@ class ApiService {
     dynamic data,
   }) async {
     String url = '$apiBaseUrl$endpoint';
-    Map<String, String> headers = {'Content-Type': 'application/json'};
+    Map<String, String> headers = {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"};
     String requestBody = json.encode(data);
 
     http.Request request =
@@ -30,6 +30,7 @@ class ApiService {
     } on SocketException catch (_) {
       showAlertSnackBar('Failed to connect to server.');
     } catch (e) {
+      print(e);
       showAlertSnackBar(genericErrorMessage);
     }
     return null;
