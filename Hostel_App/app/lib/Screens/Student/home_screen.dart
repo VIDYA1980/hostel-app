@@ -28,7 +28,7 @@ class StudentHomeScreen extends StatelessWidget {
                   builder: (context) => ComplaintsListView(),
                 ));
               },
-              child: Text("Complaints List")),
+              child: const Text("Complaints List")),
           ElevatedButton(
             onPressed: () async {
               AuthService authService =
