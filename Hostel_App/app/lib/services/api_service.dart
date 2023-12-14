@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 enum HttpMethod { get, post, put, delete }
 
 class ApiService {
-  static const apiBaseUrl = "http://192.168.197.96:8000/api";
+  static const apiBaseUrl = "http://3.110.182.1:8000/api";
 
   static Future<http.Response?> makeRequest({
     required String endpoint,
@@ -18,9 +18,10 @@ class ApiService {
     Map<String, String> headers = {'Content-Type': 'application/json'};
     String requestBody = json.encode(data);
 
-    http.Request request = http.Request(_getHttpMethodName(method), Uri.parse(url))
-      ..headers.addAll(headers)
-      ..body = requestBody;
+    http.Request request =
+        http.Request(_getHttpMethodName(method), Uri.parse(url))
+          ..headers.addAll(headers)
+          ..body = requestBody;
 
     try {
       http.StreamedResponse streamedResponse = await request.send();

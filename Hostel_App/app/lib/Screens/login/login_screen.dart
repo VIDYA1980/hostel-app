@@ -1,6 +1,7 @@
-import 'package:app/Components/transparentTextField.dart';
+import 'package:app/components/transparent_text_field.dart';
 import 'package:app/constants.dart';
 import 'package:app/services/auth_service.dart';
+import 'package:app/utilities/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,10 +18,12 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
 
   void login() async {
-    bool succesfulLogin = await authService.login(emailController.text, passwordController.text);
+    bool succesfulLogin =
+        await authService.login(emailController.text, passwordController.text);
     if (succesfulLogin && navigatorKey.currentContext != null) {
       print("Logged in as student ${authService.getUserData.isStudent}");
-      Navigator.of(navigatorKey.currentContext as BuildContext).pushNamedAndRemoveUntil("/home", (route) => false);
+      Navigator.of(navigatorKey.currentContext as BuildContext)
+          .pushNamedAndRemoveUntil("/home", (route) => false);
     }
   }
 
@@ -29,11 +32,11 @@ class _LoginPageState extends State<LoginPage> {
     authService = Provider.of<AuthService>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 28, 28, 35),
+        backgroundColor: kBackgroundColor,
         elevation: 0,
         centerTitle: true,
       ),
-      backgroundColor: const Color.fromARGB(255, 28, 28, 35),
+      backgroundColor: kBackgroundColor,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -49,9 +52,13 @@ class _LoginPageState extends State<LoginPage> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 45),
-              TransparentRoundedTextField(controller: emailController, label: 'Email'),
+              TransparentRoundedTextField(
+                  controller: emailController, label: 'Email'),
               const SizedBox(height: 15),
-              TransparentRoundedTextField(controller: passwordController, label: 'Password', isPassword: true),
+              TransparentRoundedTextField(
+                  controller: passwordController,
+                  label: 'Password',
+                  isPassword: true),
               const SizedBox(height: 45),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
@@ -60,10 +67,12 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: login,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)),
                     elevation: 5,
                   ),
-                  child: const Text('Log In', style: TextStyle(color: Colors.white, fontSize: 18)),
+                  child: const Text('Log In',
+                      style: TextStyle(color: Colors.white, fontSize: 18)),
                 ),
               ),
               // const SizedBox(height: 15),
