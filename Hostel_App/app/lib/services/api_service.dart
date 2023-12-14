@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 enum HttpMethod { get, post, put, delete }
 
 class ApiService {
-  static const apiBaseUrl = "http://192.168.16.96:8000/api";
+  static const apiBaseUrl = "http://3.110.182.1:8000/api";
 
   static Future<http.Response?> makeRequest({
     required String endpoint,
@@ -15,7 +15,7 @@ class ApiService {
     dynamic data,
   }) async {
     String url = '$apiBaseUrl$endpoint';
-    Map<String, String> headers = {'Content-Type': 'application/json'};
+    Map<String, String> headers = {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"};
     String requestBody = json.encode(data);
 
     http.Request request = http.Request(_getHttpMethodName(method), Uri.parse(url))
@@ -29,6 +29,7 @@ class ApiService {
     } on SocketException catch (_) {
       showAlertSnackBar('Failed to connect to server.');
     } catch (e) {
+      print(e);
       showAlertSnackBar(genericErrorMessage);
     }
     return null;

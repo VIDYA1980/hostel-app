@@ -18,12 +18,6 @@ class _OrganizationHomeScreenState extends State<OrganizationHomeScreen> with Si
   @override
   void initState() {
     _tabController = TabController(length: 5, vsync: this);
-    // _tabController.addListener(() {
-    //   if (_tabController.indexIsChanging) {
-    //     _tabController.index = 2;
-    //     _tabController.index = _tabController.previousIndex;
-    //   }
-    // });
     super.initState();
   }
 
