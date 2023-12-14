@@ -34,10 +34,6 @@ class Routers {
   }
 
   static MaterialPageRoute routeScreen(Widget screen) {
-    return MaterialPageRoute(
-      builder: (context) {
-        return screen;
-      },
-    );
+    return MaterialPageRoute(builder: (context) => screen);
   }
 }

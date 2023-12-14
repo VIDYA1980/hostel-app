@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 enum HttpMethod { get, post, put, delete }
 
 class ApiService {
-  static const apiBaseUrl = "http://192.168.197.96:8000/api";
+  static const apiBaseUrl = "http://192.168.16.96:8000/api";
 
   static Future<http.Response?> makeRequest({
     required String endpoint,
