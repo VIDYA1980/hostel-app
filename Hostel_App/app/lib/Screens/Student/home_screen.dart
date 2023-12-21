@@ -1,5 +1,6 @@
 import 'package:app/models/user.dart';
 import 'package:app/screens/student/complaints_list/complaints_list_view.dart';
+import 'package:app/screens/student/student_profile.dart/profile_screen.dart';
 import 'package:app/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,6 +30,13 @@ class StudentHomeScreen extends StatelessWidget {
                 ));
               },
               child: const Text("Complaints List")),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const UserProfileStatic(),
+                ));
+              },
+              child: const Text("User Profile")),
           ElevatedButton(
             onPressed: () async {
               AuthService authService =

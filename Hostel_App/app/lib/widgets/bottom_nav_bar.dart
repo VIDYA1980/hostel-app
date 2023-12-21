@@ -1,8 +1,6 @@
 import 'package:app/utilities/nav_bar_item.dart';
+import 'package:app/utilities/palette.dart';
 import 'package:flutter/material.dart';
-
-final kNavBarColor = const Color(0xff4E4E61).withOpacity(0.75);
-const kPrimaryButtonColor = Color(0xffFF7966);
 
 class CustomNavBar extends StatelessWidget {
   const CustomNavBar({super.key, required this.tabController});
@@ -47,7 +45,9 @@ class CustomFloatingActionButton extends StatelessWidget {
           onPressed: () {},
           shape: const CircleBorder(),
           backgroundColor: kPrimaryButtonColor,
-          child: Transform.scale(scale: 1.5, child: const Icon(Icons.add, color: Colors.white, grade: 5)),
+          child: Transform.scale(
+              scale: 1.5,
+              child: const Icon(Icons.add, color: Colors.white, grade: 5)),
         )),
       ),
     );
@@ -78,13 +78,26 @@ class _NavButtonsState extends State<NavButtons> {
       margin: const EdgeInsets.all(12),
       height: 80,
       width: size.width,
-      child: TabBar(controller: _tabController, dividerHeight: 0, onTap: onTabBarTap, tabs: [
-        NavBarItem(selected: _selectedTabIndex == 0, svgPath: "assets/svg/nav/Home.svg"),
-        NavBarItem(selected: _selectedTabIndex == 1, svgPath: "", icon: Icons.search_sharp),
-        AbsorbPointer(child: SizedBox(width: size.width * 0.1, height: 80)),
-        NavBarItem(selected: _selectedTabIndex == 3, svgPath: "assets/svg/nav/Calendar.svg"),
-        NavBarItem(selected: _selectedTabIndex == 4, svgPath: "assets/svg/nav/Cards.svg"),
-      ]),
+      child: TabBar(
+          controller: _tabController,
+          dividerHeight: 0,
+          onTap: onTabBarTap,
+          tabs: [
+            NavBarItem(
+                selected: _selectedTabIndex == 0,
+                svgPath: "assets/svg/nav/Home.svg"),
+            NavBarItem(
+                selected: _selectedTabIndex == 1,
+                svgPath: "",
+                icon: Icons.search_sharp),
+            AbsorbPointer(child: SizedBox(width: size.width * 0.1, height: 80)),
+            NavBarItem(
+                selected: _selectedTabIndex == 3,
+                svgPath: "assets/svg/nav/Calendar.svg"),
+            NavBarItem(
+                selected: _selectedTabIndex == 4,
+                svgPath: "assets/svg/nav/Cards.svg"),
+          ]),
     );
   }
 }
@@ -101,7 +114,8 @@ class ClippedBar extends StatelessWidget {
         height: 80,
         decoration: BoxDecoration(
           color: kNavBarColor,
-          borderRadius: const BorderRadius.horizontal(left: Radius.circular(15), right: Radius.circular(15)),
+          borderRadius: const BorderRadius.horizontal(
+              left: Radius.circular(15), right: Radius.circular(15)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -168,7 +182,8 @@ class Clipper extends CustomClipper<Path> {
     path.lineTo(x1, 0);
 
     path.quadraticBezierTo(x2, 0, x2, 25);
-    path.arcToPoint(Offset(x3, 25), radius: Radius.circular(radius), clockwise: false);
+    path.arcToPoint(Offset(x3, 25),
+        radius: Radius.circular(radius), clockwise: false);
     path.quadraticBezierTo(x3, 0, x4 + 20, 0);
 
     path.lineTo(size.width, 0);

@@ -1,8 +1,8 @@
-import 'package:app/utilities/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:app/utilities/palette.dart';
 
 class ComplaintsListView extends StatelessWidget {
-  const ComplaintsListView({super.key});
+  const ComplaintsListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,31 +27,49 @@ class ComplaintsListView extends StatelessWidget {
       // Add more complaints as needed
     ];
 
+    final double cardHeight =
+        hostelComplaints.length * 100.0; // Assuming 100 is the tile height
+
     return Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         title: const Text('List of Complaints'),
-        titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
-        iconTheme: const IconThemeData(color: Colors.white),
+        titleTextStyle: TextStyle(color: kPrimaryTextColor, fontSize: 20),
+        iconTheme: IconThemeData(color: kPrimaryTextColor),
         centerTitle: true,
         backgroundColor: kBackgroundColor,
       ),
-      body: ListView.builder(
-        itemCount: hostelComplaints.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text(
-              hostelComplaints[index]['title']!,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold, color: Colors.white),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: SizedBox(
+          height: cardHeight,
+          child: Card(
+            color: KListTileColor,
+            margin: const EdgeInsets.all(8),
+            child: ListView.builder(
+              itemCount: hostelComplaints.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text(
+                    hostelComplaints[index]['title']!,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: kPrimaryTextColor,
+                    ),
+                  ),
+                  subtitle: Text(
+                    hostelComplaints[index]['description']!,
+                    style: TextStyle(color: kSecondaryTextColor),
+                  ),
+                  onTap: () {
+                    // Add functionality for onTap if needed
+                    // For a static page, this could navigate to a new screen
+                  },
+                );
+              },
             ),
-            subtitle: Text(hostelComplaints[index]['description']!),
-            onTap: () {
-              // Add functionality for onTap if needed
-              // For a static page, this could navigate to a new screen
-            },
-          );
-        },
+          ),
+        ),
       ),
     );
   }
